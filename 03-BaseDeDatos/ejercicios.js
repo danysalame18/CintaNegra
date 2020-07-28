@@ -88,8 +88,8 @@ app.get('/tickets', (request, response)=>{
         .catch((err)=> response.status(400).json(err))
 });
 
-app.get('/tickets/:id', (require, response)=>{
-    const { id } = require.params;
+app.get('/tickets/:id', (request, response)=>{
+    const { id } = request.params;
     Tickets.findById(id, (err, ticket)=>{
         Articulos.populate(ticket, {path: 'articulos'}, (error, ticket)=>{
             response.status(200).send(ticket)
