@@ -31,11 +31,18 @@ router.post('/students', (request, response)=>{
         .then((respDB)=> response.status(200).json({ statusInfo:'Succes', respDB }))
         .catch((error)=> response.status(400).json(error))
 });
+
 router.patch('/students/:id', (request, response)=>{
     const { body } = request;
     Students.findByIdAndUpdate(request.params.id, body, {new: true})
         .then((respDB)=> response.status(201).json(respDB))
         .catch((error)=> response.status(400).json(error))
+});
+
+router.delete('/students/:id', (request, response)=>{
+    Students.findByIdAndDelete(request.params.id)
+        .then((respDB)=> response.status(204).json(respDB))
+        .catch((err)=> response.status(400).json(err))
 });
 
 module.exports = router;

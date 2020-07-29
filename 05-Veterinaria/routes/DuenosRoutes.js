@@ -1,32 +1,32 @@
 const express = require('express');
 const router = express.Router();
 
-const Carrers = require('../models/Carrers');
+const Duenos = require('../models/Duenos');
 const { response, request } = require('express');
 
-router.post('/carrers', (request, response)=>{
+router.post('/duenos', (request, response)=>{
     const { body } = request;
-    const newCarrer = new Carrers(body)
-    newCarrer.save()
+    const newDueno = new Duenos(body)
+    newDueno.save()
         .then((respDB)=> response.status(200).json({ statusInfo:'Succes', respDB }))
         .catch((error)=> response.status(400).json(error))
 });
 
-router.get('/carrers', (request, response)=>{
-    Carrers.find()
+router.get('/duenos', (request, response)=>{
+    Duenos.find()
         .then((respDB)=> response.status(201).json(respDB))
         .catch((error)=> response.status(400).json(error))
 });
 
-router.patch('/carrers/:id', (request, response)=>{
+router.patch('/dueno/:id', (request, response)=>{
     const { body } = request;
-    Carrers.findByIdAndUpdate(request.params.id, body, {new: true})
+    Duenos.findByIdAndUpdate(request.params.id, body, {new: true})
         .then((respDB)=> response.status(201).json(respDB))
         .catch((error)=> response.status(400).json(error))
 });
 
-router.delete('/carrers/:id', (request, response)=>{
-    Carrers.findByIdAndDelete(request.params.id)
+router.delete('/duenos/:id', (request, response)=>{
+    Duenos.findByIdAndDelete(request.params.id)
         .then((respDB)=> response.status(204).json(respDB))
         .catch((err)=> response.status(400).json(err))
 });
