@@ -4,7 +4,7 @@ const duenoSchema = new mongoose.Schema({
     nombre: String,
     apellido: String,
     direccion: {
-        type:String,
+        type: String,
         default: 'Sin Direccion'
     },
     telefono: Number
