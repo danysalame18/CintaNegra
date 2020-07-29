@@ -18,7 +18,7 @@ router.get('/duenos', (request, response)=>{
         .catch((error)=> response.status(400).json(error))
 });
 
-router.patch('/dueno/:id', (request, response)=>{
+router.patch('/duenos/:id', (request, response)=>{
     const { body } = request;
     Duenos.findByIdAndUpdate(request.params.id, body, {new: true})
         .then((respDB)=> response.status(201).json(respDB))
