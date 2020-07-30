@@ -50,7 +50,17 @@ router.patch('/tickets/:id/checkout', (request, response)=>{
                 .populate('products')
                 .then((ticketSumed)=> response.status(200).json(ticketSumed))
                 .catch((error)=> response.status(400).json(error))
-        })  
+            
+                // Products.findById(id)
+                //     .then((product)=>{
+                //         let stock = product.stock.map((stk)=>stk.stocks);
+                //         let queda = stock - 1;
+                //     })
+                // Products.findById(id, {stock}, {new: true})
+                //     .then((stockRest)=> response.status(200).json(stockRest))
+                //     .catch((error)=> response.status(400).json(error))
+         
+        })
 })
 
 // Acaba suma
